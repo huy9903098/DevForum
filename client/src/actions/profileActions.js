@@ -175,3 +175,22 @@ export const getProfileByHandle = handle => dispatch => {
     );
 };
 
+// Get profile by user ID
+export const getProfileById = userid => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get(`/api/profile/user/${userid}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: null
+      })
+    );
+};
+

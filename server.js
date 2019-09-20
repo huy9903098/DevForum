@@ -17,10 +17,13 @@ app.use(bodyParser.json());
 //DB config
 const db = require("./config/keys").mongoURI;
 
-// Connect to MongoDB
+//connect to mongodb
 mongoose
-  .connect(db)
-  .then(() => console.log('MongoDB Connected'))
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
 //passport middleware
@@ -45,6 +48,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-const port = process.env.PORT || 5000 ;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

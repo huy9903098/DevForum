@@ -165,7 +165,7 @@ router.post(
       .then(post => {
         const newComment = {
           text: req.body.text,
-          req: req.body.name,
+          name: req.body.name,
           avatar: req.body.avatar,
           user: req.user.id
         };
